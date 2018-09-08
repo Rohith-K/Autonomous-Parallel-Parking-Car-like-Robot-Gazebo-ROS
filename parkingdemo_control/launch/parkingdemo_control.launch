@@ -1,0 +1,27 @@
+<launch>
+
+  <!-- Load joint controller configurations from YAML file to parameter server -->
+  <rosparam file="$(find parkingdemo_control)/config/parkingdemo_control.yaml" command="load"/>
+
+  <!-- load the controllers -->
+  <node name="controller_spawner"
+    pkg="controller_manager"
+    type="spawner" respawn="false"
+    output="screen" ns="/parkingdemo"
+    args="joint_state_controller
+      rr_Wheel_effort_controller
+      rl_Wheel_effort_controller
+      fr_Wheel_effort_controller
+      fl_Wheel_effort_controller
+      fr_Steer_position_controller
+      fl_Steer_position_controller
+"
+  />
+
+
+<!-- convert joint states to TF transforms for rviz, etc -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+    <remap from="/joint_states" to="/parkingdemo/joint_states" />
+  </node>
+
+</launch>

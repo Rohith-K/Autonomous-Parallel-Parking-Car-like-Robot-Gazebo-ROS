@@ -1,0 +1,603 @@
+<sdf version='1.6'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose frame=''>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+            <contact>
+              <ode/>
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <velocity_decay>
+          <linear>0</linear>
+          <angular>0</angular>
+        </velocity_decay>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+    </model>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <state world_name='default'>
+      <sim_time>127 426000000</sim_time>
+      <real_time>30 549980729</real_time>
+      <wall_time>1532566769 806405130</wall_time>
+      <iterations>30191</iterations>
+      <model name='Construction Cone'>
+        <pose frame=''>17.5138 11.8283 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>17.5138 11.8283 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='parkingdemo'>
+        <pose frame=''>20.0348 19.9366 -2.1e-05 -8e-06 9.7e-05 -0.011942</pose>
+        <scale>1 1 1</scale>
+        <link name='base_footprint'>
+          <pose frame=''>20.0348 19.9366 -2.1e-05 -8e-06 9.7e-05 -0.011942</pose>
+          <velocity>0.00758 -0.007827 -0.00324 -0.006277 -0.008058 0.002007</velocity>
+          <acceleration>-0.098011 0.587174 -2.69852 -0.631231 0.922211 -0.769535</acceleration>
+          <wrench>-147.017 880.761 -4047.77 0 -0 0</wrench>
+        </link>
+        <link name='steer_fl'>
+          <pose frame=''>22.8941 20.6937 0.330003 -5.3e-05 -3e-05 -0.009334</pose>
+          <velocity>0.003153 0.00112 -0.062748 0.004764 0.024036 -0.000576</velocity>
+          <acceleration>0.831497 3.01857 -75.3113 -0.063833 0.74645 -0.749202</acceleration>
+          <wrench>0.831497 3.01857 -75.3113 0 -0 0</wrench>
+        </link>
+        <link name='steer_fr'>
+          <pose frame=''>22.8752 19.1114 0.33006 6e-06 -4.8e-05 -0.01196</pose>
+          <velocity>0.006746 -0.008154 0.000872 0.049069 0.001176 -0.000389</velocity>
+          <acceleration>-0.130275 -19.3693 13.5118 -0.883569 -0.552305 2.30907</acceleration>
+          <wrench>-0.130275 -19.3693 13.5118 0 -0 0</wrench>
+        </link>
+        <link name='wheel_fl'>
+          <pose frame=''>22.8941 20.6937 0.329955 1.57079 -0.055442 3.13226</pose>
+          <velocity>0.003199 0.000917 -0.050395 -0.010346 0.00675 -0.000504</velocity>
+          <acceleration>1.01646 2.35953 -63.2967 -2.15361 0.137516 -1.12576</acceleration>
+          <wrench>10.1646 23.5953 -632.967 0 -0 0</wrench>
+        </link>
+        <link name='wheel_fr'>
+          <pose frame=''>22.8752 19.1114 0.330001 1.57079 -0.095016 3.12963</pose>
+          <velocity>0.006818 -0.008243 0.00684 0.02498 0.020663 -5e-05</velocity>
+          <acceleration>0.359131 -20.3698 15.085 -0.028272 -0.555797 2.29074</acceleration>
+          <wrench>3.59131 -203.698 150.85 0 -0 0</wrench>
+        </link>
+        <link name='wheel_rl'>
+          <pose frame=''>20.0442 20.7239 0.329991 1.57078 -0.062676 3.12965</pose>
+          <velocity>0.003364 -0.006105 -0.012608 -0.01284 0.005036 0.002398</velocity>
+          <acceleration>1.85183 -0.204685 -24.4025 0.69471 0.367005 2.0397</acceleration>
+          <wrench>18.5182 -2.04685 -244.025 0 -0 0</wrench>
+        </link>
+        <link name='wheel_rr'>
+          <pose frame=''>20.0254 19.1493 0.330001 1.57074 0.001344 3.12965</pose>
+          <velocity>0.006576 -0.003664 -0.000278 0.010488 0.020429 0.002092</velocity>
+          <acceleration>0.750582 1.13743 -1.68422 2.55201 1.19993 -1.04485</acceleration>
+          <wrench>7.50582 11.3743 -16.8422 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose frame=''>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>38.3323 -3.64571 9.49868 0 0.275643 2.35619</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <model name='parkingdemo'>
+      <link name='base_footprint'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>1.4225 0 0.58 0 -0 0</pose>
+          <mass>1500</mass>
+          <inertia>
+            <ixx>1000</ixx>
+            <ixy>0</ixy>
+            <ixz>-2.27374e-13</ixz>
+            <iyy>1000</iyy>
+            <iyz>0</iyz>
+            <izz>1000</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_footprint_fixed_joint_lump__chassis_collision_collision'>
+          <pose frame=''>1.51 -0.03046 0.655149 1.5708 -0 3.14159</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/rohith/catkin_ws/src/parkingdemo_description/meshes/body_collision.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='base_footprint_fixed_joint_lump__chassis_visual'>
+          <pose frame=''>1.3641 0 -0.043676 0 -0 1.5708</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/rohith/catkin_ws/src/parkingdemo_description/meshes/fusion_13/body.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <link name='steer_fl'>
+        <pose frame=''>2.85 0.79121 0.33 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>-0.013054 -0.0295 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.037227</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.04</iyy>
+            <iyz>0</iyz>
+            <izz>0.06</izz>
+          </inertia>
+        </inertial>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <joint name='steer_fl' type='revolute'>
+        <child>steer_fl</child>
+        <parent>base_footprint</parent>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='wheel_fl'>
+        <pose frame=''>2.85 0.79121 0.33 1.5708 -0 3.14159</pose>
+        <inertial>
+          <pose frame=''>0 0 0 -3.14159 -0 -3.14159</pose>
+          <mass>10</mass>
+          <inertia>
+            <ixx>0.305583</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.305583</iyy>
+            <iyz>0</iyz>
+            <izz>7.5445</izz>
+          </inertia>
+        </inertial>
+        <collision name='wheel_fl_collision_collision'>
+          <pose frame=''>0 0 0 -3.14159 -0 -3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>0.2</length>
+              <radius>0.33</radius>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='wheel_fl_visual_visual'>
+          <pose frame=''>0 0 0.0385 3.14159 -1.57079 1.57079</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/rohith/catkin_ws/src/parkingdemo_description/meshes/fusion_13/wheel.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <joint name='wheel_fl' type='revolute'>
+        <child>wheel_fl</child>
+        <parent>steer_fl</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='steer_fr'>
+        <pose frame=''>2.85 -0.79121 0.33 0 -0 0</pose>
+        <inertial>
+          <pose frame=''>-0.01305 0.0275 0 0 -0 0</pose>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.037227</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.04</iyy>
+            <iyz>0</iyz>
+            <izz>0.06</izz>
+          </inertia>
+        </inertial>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <joint name='steer_fr' type='revolute'>
+        <child>steer_fr</child>
+        <parent>base_footprint</parent>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='wheel_fr'>
+        <pose frame=''>2.85 -0.79121 0.33 1.5708 -0 3.14159</pose>
+        <inertial>
+          <pose frame=''>0 0 0 3.14159 -0 3.14159</pose>
+          <mass>10</mass>
+          <inertia>
+            <ixx>0.305583</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.305583</iyy>
+            <iyz>0</iyz>
+            <izz>7.5445</izz>
+          </inertia>
+        </inertial>
+        <collision name='wheel_fr_collision_collision'>
+          <pose frame=''>0 0 -0.0035 3.14159 -0 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>0.2</length>
+              <radius>0.33</radius>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='wheel_fr_visual_visual'>
+          <pose frame=''>0 0 -0.043777 3.14159 1.57079 -1.57079</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/rohith/catkin_ws/src/parkingdemo_description/meshes/fusion_13/wheel.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <joint name='wheel_fr' type='revolute'>
+        <child>wheel_fr</child>
+        <parent>steer_fr</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='wheel_rl'>
+        <pose frame=''>0 0.7874 0.33 1.5708 -0 3.14159</pose>
+        <inertial>
+          <pose frame=''>0 0 -0.021117 3.14159 -0 3.14159</pose>
+          <mass>10</mass>
+          <inertia>
+            <ixx>0.305583</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.305583</iyy>
+            <iyz>0</iyz>
+            <izz>0.5445</izz>
+          </inertia>
+        </inertial>
+        <collision name='wheel_rl_collision_collision'>
+          <pose frame=''>0 0 -0.021118 3.14159 -0 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>0.2</length>
+              <radius>0.33</radius>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='wheel_rl_visual_visual'>
+          <pose frame=''>0 0 0.017382 3.14159 -1.57079 1.57079</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/rohith/catkin_ws/src/parkingdemo_description/meshes/fusion_13/wheel.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <joint name='wheel_rl' type='revolute'>
+        <child>wheel_rl</child>
+        <parent>base_footprint</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <link name='wheel_rr'>
+        <pose frame=''>0 -0.7874 0.33 1.5708 -0 3.14159</pose>
+        <inertial>
+          <pose frame=''>0 0 0.0205 3.14159 -0 3.14159</pose>
+          <mass>10</mass>
+          <inertia>
+            <ixx>0.305583</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.305583</iyy>
+            <iyz>0</iyz>
+            <izz>0.5445</izz>
+          </inertia>
+        </inertial>
+        <collision name='wheel_rr_collision_collision'>
+          <pose frame=''>0 0 0.0205 3.14159 -0 3.14159</pose>
+          <geometry>
+            <cylinder>
+              <length>0.2</length>
+              <radius>0.33</radius>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='wheel_rr_visual_visual'>
+          <pose frame=''>0 0 -0.019214 3.14159 1.57079 -1.57079</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>/home/rohith/catkin_ws/src/parkingdemo_description/meshes/fusion_13/wheel.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <joint name='wheel_rr' type='revolute'>
+        <child>wheel_rr</child>
+        <parent>base_footprint</parent>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>-1e+16</lower>
+            <upper>1e+16</upper>
+          </limit>
+          <dynamics>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+          <use_parent_model_frame>1</use_parent_model_frame>
+        </axis>
+      </joint>
+      <static>0</static>
+      <plugin name='p3d_base_controller' filename='libgazebo_ros_p3d.so'>
+        <alwaysOn>true</alwaysOn>
+        <updateRate>50.0</updateRate>
+        <topicName>ground_truth/state</topicName>
+        <gaussianNoise>0.01</gaussianNoise>
+        <frameName>world</frameName>
+        <robotNamespace>/</robotNamespace>
+        <bodyName>base_footprint</bodyName>
+        <xyzOffset>0 0 -0.33</xyzOffset>
+        <rpyOffset>0 -0 0</rpyOffset>
+      </plugin>
+      <plugin name='gazebo_ros_control' filename='libgazebo_ros_control.so'>
+        <robotNamespace>/parkingdemo</robotNamespace>
+      </plugin>
+      <pose frame=''>20 20 0 0 -0 0</pose>
+    </model>
+    <model name='Construction Cone'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://construction_cone/meshes/construction_cone.dae</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>model://construction_cone/meshes/construction_cone.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <gravity>1</gravity>
+      </link>
+      <pose frame=''>17.5138 11.8283 0 0 -0 0</pose>
+    </model>
+  </world>
+</sdf>

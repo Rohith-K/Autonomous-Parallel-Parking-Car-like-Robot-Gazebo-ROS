@@ -1,0 +1,294 @@
+<?xml version="1.0"?>
+<!-- created with Phobos 0.7 -->
+  <robot name="parkingdemo" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:arg name="dae_file" default="$(find parkingdemo_description)/meshes/fusion_13/body.dae"/>
+    
+    <link name="base_footprint">
+    </link>
+
+    <link name="base_link">
+      <inertial>
+        <origin xyz="1.4225 0 0.25" rpy="0 0 0"/>
+        <mass value="1500.0"/>
+        <inertia ixx="1000.0" ixy="0" ixz="0" iyy="1000.0" iyz="0" izz="1000.0"/>
+      </inertial>
+      <visual name="chassis">
+        <origin xyz="1.3641 0 -0.373676" rpy="0 0 1.570796"/>
+        <geometry>
+          <mesh filename="file://$(arg dae_file)" scale="1 0.97 1"/>
+        </geometry>
+        <material name="black.001"/>
+      </visual>
+      <collision name="chassis_collision">
+        <origin xyz="1.51 -0.03046 0.325149" rpy="1.570796 0 -3.141593"/>
+        <geometry>
+          <mesh filename="package://parkingdemo_description/meshes/body_collision.stl" scale="0.000965 0.001 0.001"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="steer_fl">
+      <inertial>
+        <origin xyz="-0.013054 -0.0295 0" rpy="0 0 0"/>
+        <mass value="1.0"/>
+        <inertia ixx="0.037227" ixy="0" ixz="0" iyy="0.04" iyz="0" izz="0.06"/>
+      </inertial>
+    </link>
+
+    <link name="steer_fr">
+      <inertial>
+        <origin xyz="-0.01305 0.0275 0" rpy="0 0 0"/>
+        <mass value="1.0"/>
+        <inertia ixx="0.037227" ixy="0" ixz="0" iyy="0.04" iyz="0" izz="0.06"/>
+      </inertial>
+    </link>
+
+    <link name="wheel_fl">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 -3.141593 0"/>
+        <mass value="10.0"/>
+        <inertia ixx="0.305583" ixy="0" ixz="0" iyy="0.305583" iyz="0" izz="7.5445"/>
+      </inertial>
+      <visual name="wheel_fl_visual">
+        <origin xyz="0 0 0.0385" rpy="-1.570796 -1.570796 0"/>
+        <geometry>
+          <mesh filename="package://parkingdemo_description/meshes/fusion_13/wheel.dae" scale="0.01 0.01 0.01"/>
+        </geometry>
+        <material name="carpaint_002"/>
+      </visual>
+      <collision name="wheel_fl_collision">
+        <origin xyz="0 0 0" rpy="0 -3.141593 0"/>
+        <geometry>
+          <cylinder radius="0.33" length="0.2"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="wheel_fr">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 3.141593 0"/>
+        <mass value="10.0"/>
+        <inertia ixx="0.305583" ixy="0" ixz="0" iyy="0.305583" iyz="0" izz="7.5445"/>
+      </inertial>
+      <visual name="wheel_fr_visual">
+        <origin xyz="0 0 -0.043777" rpy="-1.570796 1.570796 0"/>
+        <geometry>
+          <mesh filename="package://parkingdemo_description/meshes/fusion_13/wheel.dae" scale="0.01 0.01 0.01"/>
+        </geometry>
+        <material name="carpaint_002.001"/>
+      </visual>
+      <collision name="wheel_fr_collision">
+        <origin xyz="0 0 -0.0035" rpy="0 3.141593 0"/>
+        <geometry>
+          <cylinder radius="0.33" length="0.2"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="wheel_rl">
+      <inertial>
+        <origin xyz="0 0 -0.021117" rpy="0 3.141593 0"/>
+        <mass value="10.0"/>
+        <inertia ixx="0.305583" ixy="0" ixz="0" iyy="0.305583" iyz="0" izz="0.5445"/>
+      </inertial>
+      <visual name="wheel_rl_visual">
+        <origin xyz="0 0 0.017382" rpy="-1.570796 -1.570796 0"/>
+        <geometry>
+          <mesh filename="package://parkingdemo_description/meshes/fusion_13/wheel.dae" scale="0.01 0.01 0.01"/>
+        </geometry>
+        <material name="carpaint_002.003"/>
+      </visual>
+      <collision name="wheel_rl_collision">
+        <origin xyz="0 0 -0.021118" rpy="0 3.141593 0"/>
+        <geometry>
+          <cylinder radius="0.33" length="0.2"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="wheel_rr">
+      <inertial>
+        <origin xyz="0 0 0.0205" rpy="0 3.141593 0"/>
+        <mass value="10.0"/>
+        <inertia ixx="0.305583" ixy="0" ixz="0" iyy="0.305583" iyz="0" izz="0.5445"/>
+      </inertial>
+      <visual name="wheel_rr_visual">
+        <origin xyz="0 0 -0.019214" rpy="-1.570796 1.570796 0"/>
+        <geometry>
+          <mesh filename="package://parkingdemo_description/meshes/fusion_13/wheel.dae" scale="0.01 0.01 0.01"/>
+        </geometry>
+        <material name="carpaint_002.002"/>
+      </visual>
+      <collision name="wheel_rr_collision">
+        <origin xyz="0 0 0.0205" rpy="0 3.141593 0"/>
+        <geometry>
+          <cylinder radius="0.33" length="0.2"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="base_link" type="fixed">
+      <origin xyz="0 0 0.33" rpy="0 0 0"/>
+      <parent link="base_footprint"/>
+      <child link="base_link"/>
+    </joint>
+
+    <joint name="steer_fl" type="continuous">
+      <origin xyz="2.85 0.79121 0" rpy="0 0 0"/>
+      <parent link="base_link"/>
+      <child link="steer_fl"/>
+      <axis xyz="0 0 1.0"/>
+     <!-- <limit lower="-0.65" upper="0.65" effort="0" velocity="0"/> -->
+    </joint>
+
+    <joint name="steer_fr" type="continuous">
+      <origin xyz="2.85 -0.79121 0" rpy="0 0 0"/>
+      <parent link="base_link"/>
+      <child link="steer_fr"/>
+      <axis xyz="0 0 1.0"/>
+     <!-- <limit lower="-0.65" upper="0.65" effort="0" velocity="0"/> -->
+    </joint>
+
+    <joint name="wheel_fl" type="continuous">
+      <origin xyz="0 0 0" rpy="1.570796 0 -3.141593"/>
+      <parent link="steer_fl"/>
+      <child link="wheel_fl"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="0" velocity="22.0"/>
+    </joint>
+
+    <joint name="wheel_fr" type="continuous">
+      <origin xyz="0 0 0" rpy="1.570796 0 -3.141593"/>
+      <parent link="steer_fr"/>
+      <child link="wheel_fr"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="0" velocity="22.0"/>
+    </joint>
+
+    <joint name="wheel_rl" type="continuous">
+      <origin xyz="0 0.7874 0" rpy="1.570796 0 -3.141593"/>
+      <parent link="base_link"/>
+      <child link="wheel_rl"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="5000.0" velocity="22.0"/>
+    </joint>
+
+    <joint name="wheel_rr" type="continuous">
+      <origin xyz="0 -0.7874 0" rpy="1.570796 0 -3.141593"/>
+      <parent link="base_link"/>
+      <child link="wheel_rr"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="5000.0" velocity="22.0"/>
+    </joint>
+
+  <!-- Transmission Tags -->
+
+  <transmission name="tran1">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="wheel_rr">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="wheel_Motor1">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran2">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="wheel_rl">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="wheel_Motor2">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran3">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="wheel_fr">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="wheel_Motor3">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran4">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="wheel_fl">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="wheel_Motor4">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran5">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="steer_fr">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="wheel_Motor5">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="tran6">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="steer_fl">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="wheel_Motor6">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <!-- Plugin Definitions -->
+
+   
+  <gazebo>
+    <plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>50.0</updateRate>
+      <bodyName>base_link</bodyName>
+      <topicName>ground_truth/state</topicName>
+      <gaussianNoise>0.01</gaussianNoise>
+      <frameName>world</frameName>
+      <xyzOffset>0 0 0</xyzOffset>
+      <rpyOffset>0 0 0</rpyOffset>
+    </plugin>
+
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/parkingdemo</robotNamespace>
+    </plugin>
+  </gazebo>
+
+
+    <material name="black.001">
+      <color rgba="0 0 0 1.0"/>
+    </material>
+
+    <material name="carpaint_002">
+      <color rgba="0.941177 0.941177 0.941177 1.0"/>
+    </material>
+
+    <material name="carpaint_002.001">
+      <color rgba="0.941177 0.941177 0.941177 1.0"/>
+    </material>
+
+    <material name="carpaint_002.002">
+      <color rgba="0.941177 0.941177 0.941177 1.0"/>
+    </material>
+
+    <material name="carpaint_002.003">
+      <color rgba="0.941177 0.941177 0.941177 1.0"/>
+    </material>
+
+  </robot>

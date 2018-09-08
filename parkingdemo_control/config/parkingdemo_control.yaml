@@ -1,0 +1,38 @@
+parkingdemo:
+  # Publish all joint states -----------------------------------
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+  
+
+  # Effort Controllers ---------------------------------------
+  rr_Wheel_effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: wheel_rr
+    pid: {p: 100.0, i: 0.1, d: 10.0}
+
+  rl_Wheel_effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: wheel_rl
+    pid: {p: 100.0, i: 0.1, d: 10.0}
+
+  fr_Wheel_effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: wheel_fr
+    pid: {p: 100.0, i: 0.1, d: 10.0}
+
+  fl_Wheel_effort_controller:
+    type: effort_controllers/JointEffortController
+    joint: wheel_fl
+    pid: {p: 100.0, i: 0.1, d: 10.0}
+
+  # Position Controllers ---------------------------------------
+  fr_Steer_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: steer_fr
+    pid: {p: 100.0, i: 0.1, d: 10.0}
+
+  fl_Steer_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: steer_fl
+    pid: {p: 100.0, i: 0.1, d: 10.0}
