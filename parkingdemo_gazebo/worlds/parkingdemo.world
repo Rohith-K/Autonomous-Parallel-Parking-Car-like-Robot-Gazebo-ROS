@@ -179,7 +179,7 @@
       <pose frame=''>16.25 17.5 0 0 -0 0</pose>
     </model>
     
-    <model name='Construction Cone1'>
+    <model name='Construction Cone4'>
       <static>1</static>
       <link name='link'>
         <collision name='collision'>

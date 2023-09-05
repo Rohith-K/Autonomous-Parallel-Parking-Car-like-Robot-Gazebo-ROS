@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+# For ubuntu20.04 LTS
 # Software License Agreement (BSD License)
 #
 # Copyright (c) 2008, Willow Garage, Inc.
@@ -145,9 +146,12 @@ def calc_distance(a, b):
     
     
 def veh_control(initial_pos, start_pos, transition_pos, goal_pos, radius, update_pos):
+    global flag
+    # print("Input to func veh_control", initial_pos, start_pos, transition_pos, goal_pos, radius, update_pos)
     
-    print initial_pos, start_pos, transition_pos, goal_pos, radius, update_pos
-
+    #  Here, we only need to give the target value of steering angle or wheel effort(force or torque)
+    #  steer_position_controller is a steering angle controller, with radians as unit
+    #  wheel_effort_controller is a wheel effort controller, with Nm as unit.
     if update_pos[0]>start_pos[0]:
         vel = -12
         steer = 0
@@ -159,10 +163,11 @@ def veh_control(initial_pos, start_pos, transition_pos, goal_pos, radius, update
     elif update_pos[0]<=(transition_pos[0]) and update_pos[0]>(goal_pos[0]-0.5) and flag == 0:
         steer = 0.49
         vel = -104
+   
     elif update_pos[0]<=goal_pos[0]-0.5:
         steer = 0
         vel = 20
-        global flag
+
         flag = 1
         
     elif flag == 1:
@@ -186,9 +191,10 @@ def veh_mission(msg):
     first_obstacle = np.array([20-(length/2+7), 20-(width/2+0.5)])
     goal = np.array([first_obstacle[0], first_obstacle[1] - width/2])
     
-    print float(msg.pose.pose.position.x)
+    # print( float(msg.pose.pose.position.x))
     launch_coord = np.array([20, 20])
     current_pos = np.array([msg.pose.pose.position.x, msg.pose.pose.position.y])
+    current_vel = np.array([msg.twist.twist.linear.x, msg.twist.twist.linear.y])
     
     r_star, center1, center2, initial, start, transition = park_points(Ri_min, launch_coord, goal, width)
     #trajectory(center1, center2, initial, start, transition, goal_pos, r_star)
@@ -196,9 +202,15 @@ def veh_mission(msg):
     vel_cmd, steer_cmd = veh_control(initial, start, transition, goal, r_star, current_pos)
 
     
+    
+    rospy.loginfo("current_pos:")
+    rospy.loginfo(current_pos)
+    rospy.loginfo("current_vel:")
+    rospy.loginfo(current_vel)
+    rospy.loginfo("vel_cmd:")
     rospy.loginfo(vel_cmd)
+    rospy.loginfo("steer_cmd:")
     rospy.loginfo(steer_cmd)
-    #rospy.loginfo(current_pos)
     rr_pub.publish(vel_cmd)
     rl_pub.publish(vel_cmd)
     fr_pub.publish(steer_cmd)
